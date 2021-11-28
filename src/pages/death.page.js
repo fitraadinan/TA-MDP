@@ -3,17 +3,19 @@ import { ActivityIndicator, Image, FlatList, Text, View } from 'react-native';
 import Axios from 'axios';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
-import episodeStyle from '../stylessheets/episode.style';
+import { useDispatch } from 'react-redux';
+import DetailDeath from './detail.death';
+import deathStyle from '../stylessheets/death.style';
 
-export default StudentPages = () => {
+export default DeathPage = () => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const navigation = useNavigation();
-  
+  const dispatch = useDispatch();
 
   useEffect(() => {
     let isMounted = true;
-    Axios.get('https://breakingbadapi.com/api/episodes')
+    Axios.get('https://breakingbadapi.com/api/deaths')
       .then(({ data }) => {
         // console.log("defaultApp -> data", data)
         setData(data)
@@ -31,18 +33,22 @@ export default StudentPages = () => {
           renderItem={({ item }) => {
             return (
               <TouchableOpacity
-                onPress={() => navigation.navigate('DetailEpisodes', {id: item.id})}>
-                <View style={episodeStyle.headerContainer}>
-                  <View style={episodeStyle.headerTXT}>
-                    <Text style={{ fontSize: 20, fontWeight: 'bold' }}>{item.title}</Text>
-                    <Text style={{ fontSize: 15 }}>Episode {item.episode}</Text>
-                    <Text style={{ fontSize: 15}}>Season {item.season}</Text>
+                onPress={() => {
+                  dispatch({
+                    type: 'FILL_DATADEATH',
+                    inputValue: item,
+                  });
+                  navigation.navigate('DetailDeath');
+                }}>
+                <View style={deathStyle.headerContainer}>
+                  <Image source={require('../image/episode.png')} style={deathStyle.headereps} />
+                  <View style={deathStyle.headerTXT}>
+                    <Text style={{ fontSize: 20, fontWeight: 'bold' }}>{item.death}</Text>
                   </View>
-                  <Image source={require('../image/panah.png')} style={episodeStyle.headerPanah}/>
+                  <Image source={require('../image/panah.png')} style={deathStyle.headerPanah} />
                 </View>
-
               </TouchableOpacity>
-            )
+            );
           }}
         />
       )}
