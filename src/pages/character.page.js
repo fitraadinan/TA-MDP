@@ -1,14 +1,13 @@
-import React, {useEffect, useState} from 'react';
-import {ActivityIndicator, Image, FlatList, Text, View} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { ActivityIndicator, Image, FlatList, Text, View } from 'react-native';
 import Axios from 'axios';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-import CharacterStyle from '../stylessheets/character.style';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import DetailCharacter from './detail.character';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import characterStyle from '../stylessheets/character.style';
-import {useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 
-export default StudentPages = () => {
+export default CharacterPage = () => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const navigation = useNavigation();
@@ -17,7 +16,7 @@ export default StudentPages = () => {
   useEffect(() => {
     let isMounted = true;
     Axios.get('https://breakingbadapi.com/api/characters')
-      .then(({data}) => {
+      .then(({ data }) => {
         // console.log("defaultApp -> data", data)
         setData(data);
       })
@@ -26,14 +25,14 @@ export default StudentPages = () => {
   }, []);
 
   return (
-    <View style={{flex: 1, padding: 24}}>
+    <View style={{ flex: 1, padding: 24 }}>
       {isLoading ? (
         <ActivityIndicator />
       ) : (
         <FlatList
           data={data}
           keyExtractor={(item, index) => index}
-          renderItem={({item}) => {
+          renderItem={({ item }) => {
             return (
               <TouchableOpacity
                 onPress={() => {
@@ -59,7 +58,7 @@ export default StudentPages = () => {
                       }}>
                       {item.name}
                     </Text>
-                    <Text style={{fontSize: 15}}>
+                    <Text style={{ fontSize: 15 }}>
                       The cast is {item.portrayed}
                     </Text>
                   </View>
