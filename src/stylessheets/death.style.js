@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import { black } from 'react-native-paper/lib/typescript/styles/colors';
 
 export default StyleSheet.create({
     container: {
@@ -20,12 +21,18 @@ export default StyleSheet.create({
     headerTXT: {
         marginLeft: 20,
         fontSize: 20,
-        width: 290,
-        marginVertical: 10
+        width: 270,
+        marginVertical: 10,
     },
     headerPanah: {
-        height: 30,
-        width: 30,
-        marginVertical: 30
-    }
+        height: 20,
+        width: 20,
+        marginVertical: 15,
+    },
+    headereps:{
+        height: 20,
+        width: 20,
+        marginHorizontal: 10,
+        marginVertical: 15,
+    },
 });
