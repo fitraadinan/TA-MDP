@@ -1,7 +1,7 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Pages from '../pages';
-import {faBars, faGraduationCap, faReceipt, faUserGraduate, faUsers} from '@fortawesome/free-solid-svg-icons';
+import {faBars, faReceipt, faUsers} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 
 const NavStack = createBottomTabNavigator();
@@ -20,10 +20,10 @@ function StackNavBar() {
                 }}
             />
             <NavStack.Screen
-                name="Episode"
-                component={Pages.EpisodePage}
+                name="Death"
+                component={Pages.DeathPage}
                 options={{
-                    headerTitle: 'Episode',
+                    headerTitle: 'Deaths Case',
                     tabBarIcon: ({color}) => {
                         return <FontAwesomeIcon icon={faReceipt} size={20} color={color} />;
                     },
