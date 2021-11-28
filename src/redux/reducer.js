@@ -14,12 +14,12 @@ const CharacterReducer = (state = initialStateCharacter, action) => {
   return state;
 };
 
-const initialStateEpisode = {
+const initialStateDeath = {
   data: {},
 };
 
-const EpisodeReducer = (state = initialStateEpisode, action) => {
-  if (action.type === 'FILL_DATAEPISODE') {
+const DeathReducer = (state = initialStateDeath, action) => {
+  if (action.type === 'FILL_DATADEATH') {
     return {
       ...state,
       ['data']: action.inputValue,
@@ -30,7 +30,7 @@ const EpisodeReducer = (state = initialStateEpisode, action) => {
 
 const reducer = combineReducers({
   CharacterReducer,
-  EpisodeReducer,
+  DeathReducer,
 });
 
 export default reducer;
