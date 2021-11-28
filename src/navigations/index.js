@@ -7,6 +7,7 @@ import aboutPage from '../pages/about.page';
 import detailCharacter from '../pages/detail.character';
 import { Provider } from 'react-redux';
 import { store } from '../redux';
+import detailDeath from '../pages/detail.death';
 
 const Stack = createStackNavigator();
 
@@ -36,12 +37,24 @@ class Navigator extends Component {
                             name="DetailCharacter"
                             component={DetailCharacter}
                             options={{
+                                headerTitle: 'Detail Character',
                                 headerStyle: {
                                     shadowOpacity: 0,
                                     elevation: 0,
                                 },
-                                headerTitle: null,
-                                headerShown: null,
+                                
+                            }}
+                        />
+                        <Stack.Screen
+                            name="DetailDeath"
+                            component={DetailDeath}
+                            options={{
+                                headerTitle: 'Detail Deaths Case',
+                                headerStyle: {
+                                    shadowOpacity: 0,
+                                    elevation: 0,
+                                },
+                                
                             }}
                         />
                     </Stack.Navigator>
