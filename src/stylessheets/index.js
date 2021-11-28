@@ -1,9 +1,13 @@
 import CharacterStyle from './character.style';
-import EpisodeStyle from './episode.style';
+import detailCharacterStyle from './detail.character.style';
+import DeathStyle from './death.style';
+import detailDeathStyle from './detail.death.style';
 import AboutStyle from './about.style';
 
 export default {
     CharacterStyle,
-    EpisodeStyle,
+    DeathStyle,
     AboutStyle,
+    detailCharacterStyle,
+    detailDeathStyle,
 };
