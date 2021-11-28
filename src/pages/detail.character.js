@@ -1,39 +1,33 @@
-import React, {useEffect, useState} from 'react';
-import {Text, View} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Text, View, Image } from 'react-native';
 import characterStyle from '../stylessheets/character.style';
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
+import detailCharacterStyle from '../stylessheets/detail.character.style';
 
 export default DetailCharacter = () => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState({});
   const CharacterReducer = useSelector(state => state.CharacterReducer);
-  // const id = 4;
 
   useEffect(() => {
     setData(CharacterReducer.data);
   }, []);
-  // useEffect(() => {
-  //   let isMounted = true;
-  //   Axios.get('https://breakingbadapi.com/api/characters/'+ id)
-  //     .then(({ data }) => {
-  //       console.log("data = ", data)
-  //       setData(data)
-  //     })
-  //     .catch((error) => console.error(error))
-  //     .finally(() => setLoading(false));
-  // }, []);
 
-  console.log(CharacterReducer.data.name);
-  console.log('diatas');
   return (
-    <View style={characterStyle.headerTXT}>
-      {/* <Text style={aboutStyle.headerHello}>Hello everyone!</Text>
-      <View><Text style={aboutStyle.headerBodyTXT}>Thank you for using this application.</Text></View> */}
-      <View style={characterStyle.headerTXT}>
-        <Text style={{paddingBottom: 10, fontSize: 20, fontWeight: 'bold'}}>
-          {data.name}
+    <View style={detailCharacterStyle.container}>
+      <Image
+        source={{
+          uri: data.img,
+        }}
+        style={detailCharacterStyle.headerImage}
+      />
+      <View style={detailCharacterStyle.headerBody}>
+        <Text style={detailCharacterStyle.headerName}>{data.name}</Text>
+        <Text style={detailCharacterStyle.headerDesc}>
+          {data.name} has a nickname, namely {data.nickname}.
+          In drama serial {data.category}, {data.name} is played by {data.portrayed}.
+          The role {data.name} has a status of {data.status} in this drama series.
         </Text>
-        <Text style={{fontSize: 15}}>{data.category}</Text>
       </View>
     </View>
   );
